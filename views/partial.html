@@ -1,0 +1,11 @@
+<h1>${title}</h1>
+<div>
+
+    ${data.map(restaurants =>{
+        return `<p><a href="/restaurant/${restaurants.slug}" >${restaurants.name}</a></p>`
+    }).join('')}
+</div>
+<div id="login_signup">
+    <a href="/login">Login</a>
+    <a href="/signup">Sign Up</a>
+</div>

@@ -1,0 +1,38 @@
+<a href="/"><button> All restaurants</button></a>
+
+<form action="/restaurant" method = "post">
+    <h1 name="restaurant">${data.name}</h1>
+    <ul>
+        <li>
+            Food Type: ${data.category}.
+        </li>
+        <li>
+            Distance: ${data.distance} miles from you.
+        </li>
+        <li>
+            Our favorite dish to get is the ${data.favorite_dish}.
+        </li>
+        <li> This restaurant does takeout? ${data.does_takeout ? "Yes" : "No"}</li>
+    </ul>
+    <div>
+        <h3>Reviews</h3>
+        <div>${reviews.map(review =>{
+            return `<p><a href="${review.reviewer_slug}">${review.reviewer}</a> said:<p><strong>${review.title}</strong></p><p>${review.review}</p>`}).join('')}
+    </div>
+        <br>
+    <input type="text" name="restaurant" value="${data.rest_id}" hidden>
+    <select name = "reviewer">
+        ${reviewers.map(reviewer=>{return `<option value="${reviewer.id}">${reviewer.name}</option>`}).join('')}
+    </select>
+    <input type="text" name="title" value="" placeholder="Review Title">
+    <input type="text" name="review" value="" placeholder="How I Feel">
+    <select name="stars" >
+        <option value="1">1</option>
+        <option value="2">2</option>  
+        <option value="3">3</option>  
+        <option value="4">4</option>  
+        <option value="5">5</option>      
+    </select>
+
+    <input type="submit">
+</form>
